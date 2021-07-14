@@ -1,10 +1,11 @@
-from copy import Error
 import pyqrcode
 
 
 def generateCodes(params):
     if 'code' not in params :
         raise ValueError('Enter Valid Code')
+    if 'tracking' not in params :
+        params['tracking'] = '001'
     
     generated = []
     for x in range(1,params["amt"]+1):
@@ -15,17 +16,7 @@ def generateCodes(params):
     return generated
 
 
-
-def createQR():
-    code = pyqrcode.create('Knights who say ni!')
-    code_xbm = code.xbm(scale=5)
-
-    return code_xbm
-
-
-
 data = {
-    "tracking":"demo",
     "amt" : 2,
     "code" : 'https://www.dealerops.com'
 }
